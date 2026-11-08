@@ -3,201 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trương Văn Ngọc Bình - Portfolio</title>
-    <!-- Tích hợp thư viện Icon FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Trương Văn Ngọc Bình</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --bg-light: #f3f4f6;
-            --white: #ffffff;
+            --bg-main: #ffffff;
+            --bg-alt: #f8f9fa;
+            --text-dark: #111827;
+            --text-gray: #4b5563;
+            --primary: #000000;
+            --border-color: #e5e7eb;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--bg-light); line-height: 1.6; }
         
-        /* Header */
-        header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.25rem; font-weight: 700; color: var(--text-main); text-decoration: none; }
-        nav a { text-decoration: none; color: var(--text-muted); font-weight: 600; margin-left: 25px; transition: color 0.3s; }
-        nav a:hover { color: var(--primary); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background: var(--bg-main); line-height: 1.6; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-        /* General Section Layout */
-        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2rem; margin-bottom: 10px; color: var(--text-main); }
-        .section-subtitle { color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; }
+        /* Header */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: rgba(255, 255, 255, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(10px); }
+        .logo { font-size: 1.25rem; font-weight: 700; }
+        nav { display: flex; gap: 30px; align-items: center; }
+        nav a { font-weight: 500; font-size: 0.95rem; color: var(--text-gray); transition: color 0.2s; }
+        nav a:hover { color: var(--text-dark); }
+        .nav-btn { background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 600; }
+        .nav-btn:hover { background: #333; color: #fff; }
+
+        /* Sections General */
+        section { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-gray); font-weight: 600; margin-bottom: 10px; display: block; }
+        .section-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.02em; }
+        .section-desc { font-size: 1.125rem; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
 
         /* Hero Section */
-        .hero { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; background: var(--white); padding: 60px 5%; border-radius: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-top: 40px; }
-        .hero-content { flex: 1; min-width: 300px; }
-        .tagline { display: inline-block; padding: 5px 15px; background: #e0e7ff; color: var(--primary); border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; }
-        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; }
-        .btn { display: inline-block; padding: 12px 28px; background: var(--primary); color: var(--white); text-decoration: none; border-radius: 8px; font-weight: 600; transition: background 0.3s; }
-        .btn:hover { background: #1d4ed8; }
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; padding-top: 60px; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin: 15px 0 25px; letter-spacing: -0.03em; }
+        .hero-text p.subtitle { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 40px; }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary { background: var(--primary); color: #fff; padding: 15px 30px; border-radius: 50px; font-weight: 600; font-size: 1rem; display: inline-block; }
+        .btn-outline { border: 1px solid var(--border-color); padding: 15px 30px; border-radius: 50px; font-weight: 600; font-size: 1rem; display: inline-block; }
+        
+        /* Abstract Shape instead of Face */
+        .hero-image { background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); border-radius: 24px; aspect-ratio: 4/5; width: 100%; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-weight: 500; font-size: 1.2rem; text-align: center; padding: 20px; }
 
-        /* Highlight Info Cards */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: -30px; margin-bottom: 40px; padding: 0 5%; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .info-card { background: var(--white); padding: 25px; border-radius: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); text-align: center; }
-        .info-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
-        .info-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
-        .info-card p { color: var(--text-muted); font-size: 0.9rem; }
+        /* About Section */
+        .about-section { background: var(--bg-alt); max-width: 100%; padding: 100px 5%; }
+        .about-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text p { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-gray); }
+        
+        /* Stats (4 Columns) */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 40px 0; margin-top: 50px; }
+        .stat-item h4 { font-size: 1.25rem; font-weight: 700; margin-bottom: 5px; }
+        .stat-item p { color: var(--text-gray); font-size: 0.9rem; }
 
-        /* Timeline / Quá trình */
-        .timeline { border-left: 2px solid #e5e7eb; padding-left: 30px; margin-left: 15px; }
-        .timeline-item { position: relative; margin-bottom: 30px; }
-        .timeline-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; border: 4px solid var(--white); box-shadow: 0 0 0 2px var(--primary); }
-        .timeline-item h3 { font-size: 1.25rem; margin-bottom: 5px; }
-        .timeline-item .date { font-weight: 600; color: var(--primary); font-size: 0.9rem; margin-bottom: 8px; display: block; }
-        .timeline-item p { color: var(--text-muted); }
+        /* Goals (3 Columns) */
+        .goals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+        .goal-item h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+        .goal-item p { color: var(--text-gray); font-size: 1rem; }
 
-        /* Interests & Reference Grid */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; font-size: 1.3rem; }
-        .card h3 i { color: var(--primary); }
-        .tag-list { display: flex; gap: 10px; flex-wrap: wrap; }
-        .tag { background: #e0e7ff; color: var(--primary); padding: 8px 16px; border-radius: 20px; font-weight: 600; }
+        /* Timeline */
+        .timeline-list { border-left: 2px solid var(--primary); padding-left: 30px; margin-top: 40px; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -37px; top: 5px; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; }
+        .timeline-item h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 5px; }
+        .timeline-item .meta { font-weight: 600; font-size: 0.9rem; color: var(--text-gray); margin-bottom: 10px; display: block; }
+        .timeline-item p { color: var(--text-gray); }
 
-        /* Contact Section */
-        .contact-list { list-style: none; }
-        .contact-list li { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding: 15px; background: var(--white); border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .contact-list i { font-size: 1.5rem; color: var(--primary); width: 30px; text-align: center; }
-        .contact-list a { color: var(--text-main); text-decoration: none; font-weight: 600; }
-        .contact-list a:hover { color: var(--primary); }
+        /* Contact & Extras */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .contact-links { display: flex; flex-direction: column; gap: 15px; }
+        .contact-links a { font-size: 1.1rem; font-weight: 600; display: inline-flex; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
+        .contact-links a:hover { color: #3b82f6; }
+        
+        .extra-box { background: var(--bg-alt); padding: 30px; border-radius: 16px; margin-bottom: 20px; }
+        .extra-box h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+        .extra-box p { color: var(--text-gray); font-size: 0.95rem; }
 
-        footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.9rem; }
+        /* Footer */
+        footer { padding: 40px 5%; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-gray); font-size: 0.9rem; }
 
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .hero h1 { font-size: 2.2rem; }
+        @media (max-width: 900px) {
+            .hero, .about-container, .contact-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .goals-grid { grid-template-columns: 1fr; }
+            nav { display: none; } /* Giấu menu trên mobile cho gọn giống Tino */
+            .hero-text h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <a href="#" class="logo">Ngọc Bình.</a>
-    <nav>
-        <a href="#about">Về tôi</a>
-        <a href="#timeline">Quá trình</a>
-        <a href="#interests">Sở thích</a>
-        <a href="#contact">Liên hệ</a>
-    </nav>
-</header>
+    <header>
+        <a href="#" class="logo">Trương Văn Ngọc Bình</a>
+        <nav>
+            <a href="#ve-toi">Về tôi</a>
+            <a href="#linh-vuc">Lĩnh vực</a>
+            <a href="#qua-trinh">Quá trình</a>
+            <a href="#dat-lich" class="nav-btn">Đặt lịch trao đổi</a>
+        </nav>
+    </header>
 
-<section id="about">
-    <div class="hero">
-        <div class="hero-content">
-            <span class="tagline">Đại học Duy Tân — Đà Nẵng</span>
+    <section class="hero">
+        <div class="hero-text">
+            <span class="section-label">Sinh viên năm 3 đại học Duy Tân — Đà Nẵng</span>
             <h1>Trương Văn Ngọc Bình</h1>
-            <p>Xin chào, mình hiện là sinh viên năm 3. Mình đang tập trung hoàn thành tốt chương trình học tập, trau dồi chuyên môn và tìm hiểu thêm về định hướng nghề nghiệp trong thời gian tới.</p>
-            <a href="#contact" class="btn"><i class="fa-regular fa-calendar-check" style="margin-right: 8px;"></i> Đặt lịch trao đổi</a>
-        </div>
-    </div>
-</section>
-
-<div class="info-grid">
-    <div class="info-card">
-        <i class="fa-solid fa-graduation-cap"></i>
-        <h3>Đại học Duy Tân</h3>
-        <p>Trường học</p>
-    </div>
-    <div class="info-card">
-        <i class="fa-solid fa-book-open"></i>
-        <h3>Năm 3</h3>
-        <p>Cấp học</p>
-    </div>
-    <div class="info-card">
-        <i class="fa-solid fa-location-dot"></i>
-        <h3>Đà Nẵng</h3>
-        <p>Địa điểm</p>
-    </div>
-    <div class="info-card">
-        <i class="fa-regular fa-clock"></i>
-        <h3>8h – 16h</h3>
-        <p>Giờ liên hệ</p>
-    </div>
-</div>
-
-<section id="timeline">
-    <h2 class="section-title">Hành trình học tập</h2>
-    <p class="section-subtitle">Tiếp tục rèn luyện kỹ năng và chuẩn bị cho chặng đường nghề nghiệp.</p>
-    
-    <div class="timeline">
-        <div class="timeline-item">
-            <span class="date">Hiện tại</span>
-            <h3>Sinh viên năm 3 — Đại học Duy Tân</h3>
-            <p>Đang học tập và phát triển bản thân tại khu vực Đà Nẵng.</p>
-        </div>
-        <div class="timeline-item">
-            <span class="date">Trải nghiệm thực tế (6 tháng)</span>
-            <h3>Thực tập sinh — Vingroup</h3>
-            <p>Có kinh nghiệm thực tập môi trường doanh nghiệp.</p>
-        </div>
-        <div class="timeline-item">
-            <span class="date">2026</span>
-            <h3>Chứng chỉ MOS</h3>
-            <p>Đã hoàn thành và nhận chứng chỉ Microsoft Office Specialist.</p>
-        </div>
-    </div>
-</section>
-
-<section id="interests">
-    <div class="grid-2">
-        <div class="card">
-            <h3><i class="fa-solid fa-medal"></i> Sở thích & Hoạt động</h3>
-            <p style="color: #6b7280; margin-bottom: 15px;">Những hoạt động giúp mình cân bằng năng lượng ngoài giờ học.</p>
-            <div class="tag-list">
-                <span class="tag"><i class="fa-regular fa-futbol"></i> Bóng đá (Soccer)</span>
-                <span class="tag"><i class="fa-solid fa-person-swimming"></i> Bơi lội (Swimming)</span>
+            <p class="subtitle">Sinh viên năm 3 tại Đại học Duy Tân, đang học tập và phát triển định hướng nghề nghiệp tại Đà Nẵng.</p>
+            <div class="hero-btns">
+                <a href="#dat-lich" class="btn-primary">Đặt lịch trao đổi</a>
+                <a href="tel:0763632883" class="btn-outline">Gọi 0763 632 883</a>
             </div>
         </div>
-        <div class="card">
-            <h3><i class="fa-solid fa-user-tie"></i> Người tham chiếu</h3>
-            <p style="color: #6b7280; margin-bottom: 15px;">Cố vấn học tập (Academic Advisor) tại trường.</p>
-            <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
-                <strong>Ms. Nguyen Thi My My</strong><br>
-                <span style="font-size: 0.9rem; color: #6b7280;">Academic Advisor - Duy Tan University</span>
+        <div class="hero-image">
+            [Không gian sáng tạo / Khối phong cách tối giản]
+        </div>
+    </section>
+
+    <div id="ve-toi" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="section-label">Về tôi</span>
+                <h2 class="section-title">Một chút về mình</h2>
+                <p>Xin chào, mình là Trương Văn Ngọc Bình, hiện là sinh viên năm 3 của Đại học Duy Tân.</p>
+                <p>Mình đang tập trung học tập, trau dồi chuyên môn và tìm hiểu thêm về định hướng nghề nghiệp trong thời gian tới.</p>
+                <p>Nếu mọi người muốn kết nối hoặc trao đổi, hãy liên hệ với mình qua số điện thoại, Zalo hoặc email trên trang.</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>Đại học Duy Tân</h4>
+                    <p>Trường học</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Năm 3</h4>
+                    <p>Cấp học</p>
+                </div>
+                <div class="stat-item">
+                    <h4>Đà Nẵng</h4>
+                    <p>Địa điểm</p>
+                </div>
+                <div class="stat-item">
+                    <h4>8h – 16h</h4>
+                    <p>Liên hệ</p>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
-<section id="contact">
-    <h2 class="section-title">Kết nối với mình</h2>
-    <p class="section-subtitle">Hoan nghênh mọi người đến cùng mình chia sẻ và kết nối.</p>
-    
-    <ul class="contact-list">
-        <li>
-            <i class="fa-solid fa-phone"></i>
+    <section id="linh-vuc">
+        <span class="section-label">Lĩnh vực tôi làm</span>
+        <h2 class="section-title">Mục tiêu của mình</h2>
+        <p class="section-desc">Không ngừng học hỏi và chuẩn bị tốt hơn cho chặng đường nghề nghiệp phía trước.</p>
+        
+        <div class="goals-grid">
+            <div class="goal-item">
+                <h3>Học tập chủ động</h3>
+                <p>Tập trung hoàn thành tốt chương trình học và xây dựng nền tảng chuyên môn vững chắc.</p>
+            </div>
+            <div class="goal-item">
+                <h3>Phát triển kỹ năng</h3>
+                <p>Rèn luyện các kỹ năng thực tế cần thiết cho học tập, công việc và cuộc sống hàng ngày.</p>
+            </div>
+            <div class="goal-item">
+                <h3>Mở rộng kết nối</h3>
+                <p>Gặp gỡ, trao đổi và học hỏi thêm kinh nghiệm từ những người đi trước và xung quanh.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="qua-trinh">
+        <span class="section-label">Hiện tại</span>
+        <h2 class="section-title">Hành trình học tập</h2>
+        
+        <div class="timeline-list">
+            <div class="timeline-item">
+                <h3>Sinh viên năm 3 — Đại học Duy Tân</h3>
+                <span class="meta">Hiện tại</span>
+                <p>Đang học tập và phát triển bản thân tại Đà Nẵng.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Phát triển bản thân</h3>
+                <span class="meta">Mục tiêu</span>
+                <p>Tiếp tục rèn luyện kỹ năng và chuẩn bị cho chặng đường nghề nghiệp sắp tới.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Chứng chỉ MOS</h3>
+                <span class="meta">2026</span>
+                <p>Đã lấy bằng Microsoft Office Specialist (MOS) năm 2026.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Kinh nghiệm thực tập — Vingroup</h3>
+                <span class="meta">6 tháng</span>
+                <p>Có kinh nghiệm thực tập 6 tháng trong môi trường doanh nghiệp tại Vingroup.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dat-lich">
+        <div class="contact-grid">
             <div>
-                <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">Điện thoại / Zalo</span>
-                <a href="https://zalo.me/0763632883">0763 632 883</a>
+                <span class="section-label">Liên hệ</span>
+                <h2 class="section-title">Kết nối với mình</h2>
+                <p class="section-desc">Trương Văn Ngọc Bình · Sinh viên năm 3 Đại học Duy Tân · Đà Nẵng. Hoan nghênh mọi người đến cùng mình chia sẻ và kết nối.</p>
+                
+                <div class="contact-links">
+                    <a href="tel:0763632883">📞 0763 632 883</a>
+                    <a href="https://zalo.me/0763632883">💬 Nhắn Zalo 0763 632 883</a>
+                    <a href="mailto:truongvanngocbinh@gmail.com">✉️ truongvanngocbinh@gmail.com</a>
+                    <a href="#">📍 6 Phước Lý 20, Hòa Khánh, Đà Nẵng</a>
+                </div>
             </div>
-        </li>
-        <li>
-            <i class="fa-solid fa-envelope"></i>
+            
             <div>
-                <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">Email công việc</span>
-                <a href="mailto:truongvanngocbinh@gmail.com">truongvanngocbinh@gmail.com</a>
+                <div class="extra-box">
+                    <h4>Sở thích cá nhân</h4>
+                    <p>Bên cạnh việc học tập, mình thường xuyên tham gia các hoạt động thể thao như <strong>Soccer (Bóng đá)</strong> và <strong>Swimming (Bơi lội)</strong> để rèn luyện sức khỏe và cân bằng cuộc sống.</p>
+                </div>
+                <div class="extra-box">
+                    <h4>Người tham chiếu (Reference)</h4>
+                    <p><strong>Ms. Nguyen Thi My My</strong><br>
+                    Academic Advisor - Duy Tan University</p>
+                </div>
             </div>
-        </li>
-        <li>
-            <i class="fa-solid fa-map-location-dot"></i>
-            <div>
-                <span style="display: block; font-size: 0.85rem; color: var(--text-muted);">Địa chỉ</span>
-                <span>6 Phước Lý 20, Hòa Khánh, Đà Nẵng</span>
-            </div>
-        </li>
-    </ul>
-</section>
+        </div>
+    </section>
 
-<footer>
-    <p>© 2026 Trương Văn Ngọc Bình. Bảo lưu mọi quyền.</p>
-</footer>
+    <footer>
+        <p>© 2026 Trương Văn Ngọc Bình. Bảo lưu mọi quyền.</p>
+    </footer>
 
 </body>
 </html>
